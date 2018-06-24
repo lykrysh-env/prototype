@@ -1,0 +1,34 @@
+.thumbnails .grid {
+  display: grid; 
+  grid-gap: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(19rem,19rem));
+  grid-auto-rows: 0rem; justify-content: left; align-content: left;
+  width: calc(100% - 0px); padding-bottom: 20rem;
+}
+
+.thumbnails .grid .item { 
+ border: 0; vertical-align:top;text-align:left; 
+ padding-left: 0px; padding-right: 0px; padding-top: 0px; padding-bottom: 3rem;
+}
+
+.thumbnails .grid .item .clk h3 {
+ color: #000; margin-bottom: 0.5rem; margin-top:1.0rem;
+ font-family: text; font-weight:normal;font-size: 1.4rem; line-height: 1.8rem; 
+}
+.thumbnails .grid .item .clk small {
+ color: #ffb3b3; margin-bottom: 0.2rem;
+ font-family: text; font-weight:normal;font-size: 1rem; line-height: 1.5rem; 
+}
+
+.thumbnails .grid .item .clk .foto{}
+.thumbnails .grid .item .clk .foto img { width: 19rem; }
+.thumbnails .grid .item .clk .onelink { }
+.thumbnails .grid .item .clk .onelink:hover h3 { color:#990000; }
+.thumbnails .grid .item .clk .onelink:active .foto img { 
+  filter: blur(1px);
+  -webkit-filter: blur(1px);-moz-filter: blur(1px);-o-filter: blur(1px);-ms-filter: blur(1px);
+}
+.thumbnails .grid .item .clk .filmby { color: #fff; display: inline-block; padding-bottom: 0.5rem;}
+.thumbnails .grid .item .clk .filmby .who:hover { color: #990000; }
+.thumbnails .grid .item .clk .intro { display: inline-block; }
+

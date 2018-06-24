@@ -1,0 +1,483 @@
+<html>
+<head>
+<title></title>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<link href="../_styles/base.css" rel="stylesheet">
+<link href="../_styles/midfilmvim.css" rel="stylesheet">
+<link href="../_styles/checkboxes.css" rel="stylesheet">
+<link href="../_styles/thumbnails.css" rel="stylesheet">
+
+<script type="text/javascript" src="../_script/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../_script/base.js"></script>
+<script type="text/javascript" src="../_script/vplyr.js"></script>
+<script type="text/javascript" src="../_script/checkboxes.js"></script>
+<script type="text/javascript" src="../_script/thumbnails.js"></script>
+
+
+<script type="text/javascript">
+window.onbeforeunload = function() {window.scrollTo(0,0);}
+window.addEventListener("resize", resizeAllGridItems);
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).scrollTop(0);
+	$('#play1').css('display','none');
+	resizeAllGridItems();
+});
+</script>
+
+
+</head>
+
+<body>
+<!-- ---------------------------------------------------- top bar ------------------- -->
+<div class="fixwhite whitebox" style="opacity:0.0">
+	<h4 class="auteurku toplogo noselect pntcursor " onclick="moveto('../index.html')">auteurku</h4>
+	<div id="filmtitletop" class="filmtitletop noselect pntcursor" onclick="goup();">whatever</div>
+</div>
+<h4 class="auteurku toplogo filmlogo noselect pntcursor " onclick="moveto('../index.html')">auteurku</h4>
+
+
+
+<!-- ----------------------------------------------------black screen for full movie ------------------- -->
+<div id="fakebar" class="fakebottom"></div>
+<div id="blackbar" class="watchitblackbottom">
+
+<div class="xblk noselect pntcursor">
+ <a><img src="../_images/x.png"></a>
+</div>
+
+<div id="blackcontent">
+	<div id="placeformoviename" class="placeformovie">
+		<div class="pausemask noselect nocursor"></div>
+		<div class="mvmask noselect">
+			<div id="playagain" class="pntcursor">
+				<img src="../_images/youtubeplay.png">
+				<small id="watchagain">Watch again</small>
+			</div>
+		</div>
+		<div class="belowmvmask noselect"></div>
+
+		<div class="locatepreloader noselect" >
+			<div  class="sk-fading-circle">
+			  <div class="sk-circle1 sk-circle"></div>
+			  <div class="sk-circle2 sk-circle"></div>
+			  <div class="sk-circle3 sk-circle"></div>
+			  <div class="sk-circle4 sk-circle"></div>
+			  <div class="sk-circle5 sk-circle"></div>
+			  <div class="sk-circle6 sk-circle"></div>
+			  <div class="sk-circle7 sk-circle"></div>
+			  <div class="sk-circle8 sk-circle"></div>
+			  <div class="sk-circle9 sk-circle"></div>
+			  <div class="sk-circle10 sk-circle"></div>
+			  <div class="sk-circle11 sk-circle"></div>
+			  <div class="sk-circle12 sk-circle"></div>
+			</div>
+		</div>
+		<div id="longvideo"></div>
+
+	</div>
+
+  <div class="movieplayer">
+    <div class="playpause pntcursor">
+	<div id="movietoggle" class="pausemovie"></div>
+    </div>
+
+    <div class="player-controls-top">
+        <div id="progress-bar" class="player-progress-bar">
+            <div id="current-time-bar" class="player-progress-bar-time ">
+                <div id="current-timer" class="current-timer">
+                    <div id="current-timer-number" class="current-timer-number noselect">00 m 00 s</div>
+                </div>
+            </div>
+            <div id="buffer-bar" class="player-progress-bar-buffer"></div>
+            <div id="final-timer" class="final-timer">
+                <div id="final-timer-number" class="final-timer-number noselect">00 m 00 s</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player-controls-bottom">
+        <div class="player-controls-bottom-right">
+            <div class="player-btn-volume">
+                <div id="player-btn-mute" class="player-btn-volume-mute noselect pntcursor" data-other="Unmute">
+                    <img src="../_images/sound.png" alt="">
+                </div>
+                <div id="player-volume-bar" class="player-btn-volume-bar pntcursor">
+                    <div id="player-current-volume" class="player-btn-volume-bar-range"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="origresl noselect pntcursor" id="originalre"></div>
+    <div class="fullunfullbut pntcursor"><div id="fullbuttoggle" class="fullbut"></div></div>
+  </div>
+ </div>
+</div>
+
+
+
+
+<!-- ---------------------------------------------------- full pic ------------------- -->
+<div id="hi" class="fillwindow pink100 edges">
+	<div id="bicpic" class="blur5"></div>
+	<div id="backduct" class="backduct"></div>
+	<div class="duct noselect">
+		<div class="txtblk">
+			<h1 id="filmtitle">whatever</h1>
+			<h2 class="filmby"><div class="who pntcursor" onclick="moveto()">Erick Flores Gamelo</div> | 2018 | 3'</h2>
+		</div>
+	</div>
+	<div id="play1 noselect" class="watchcreditbutton pntcursor">
+		<img src="../_images/youtubeplay.png">
+	</div>
+	<h4 class="explore noselect pntcursor" onclick="gotoid('heredown', 60)">explore more</h4>
+	<h4 class="filmdesc noselect pntcursor" onclick="gotoid('about', 60)">about this film</h4>
+</div>
+
+<!-- ---------------------------------------------------- about film ------------------- -->
+<div id="about" class="aboutfilm">
+<div class="textwidth">
+	<p>
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
+quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
+reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+	</p>
+	<div class="filters noselect">dolorem ipsum</div>
+	<p>
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, 
+quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
+reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+	</p>
+</div>
+</div>
+
+<!-- ---------------------------------------------------- show filter button ------------------- -->
+<div id="heredown" class="abovepink">
+	<div class="tooltip noselect pntcursor">
+		<img src="../_images/tune2.png">
+		<span class="tooltiptext filters">show filters</span>
+	</div>
+</div>
+
+<!-- ---------------------------------------------------- filters ------------------- -->
+<div class="belowpink">
+<form action="javascript:dummy()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
+
+	<div class="filters noselect">categories</div>
+	<div class="ckboxes">
+		<div id="chk1" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb1" name=""/>
+			<label for="cb1"></label>
+		</div>
+
+		<div id="chk2" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb2" name=""/>
+			<label for="cb2"></label>
+		</div>
+
+		<div id="chk3" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb3" name=""/>
+			<label for="cb3"></label>
+		</div>
+
+		<div id="chk4" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb4" name=""/>
+			<label for="cb4"></label>
+		</div>
+
+		<div id="chk5" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb5" name=""/>
+			<label for="cb5"></label>
+		</div>
+
+		<div id="chk6" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb6" name=""/>
+			<label for="cb6"></label>
+		</div>
+
+		<div id="chk7" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb7" name=""/>
+			<label for="cb7"></label>
+		</div>
+
+		<div id="chk8" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb8" name=""/>
+			<label for="cb8"></label>
+		</div>
+
+		<div id="chk9" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb9" name=""/>
+			<label for="cb9"></label>
+		</div>
+
+		<div id="chk0" class="checkboxThree noselect">
+			<input type="checkbox" value="1" id="cb0" name=""/>
+			<label for="cb0"></label>
+		</div>
+	</div>
+	<hr>
+	<div class="filters noselect">search</div>
+	<div class="srchboxes">
+		<input id="" type="text" name="" class="searchfield-full-lookup"/>
+	</div>
+	<hr>
+	<div class="refreshtip noselect pntcursor">
+		<button class="checkout noselect pntcursor" type="submit"><img src='../_images/refresh.png'></button>
+		<span class="refreshtiptext filters">load new selection</span>
+	</div>
+</form>
+</div>
+<!-- ---------------------------------------------------- thumbnails ------------------- -->
+<div class="thumbnails">
+		<div class="grid">
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180324.html');">
+					<div class="foto edges"><img src="../_images/editorial/180324.png"></div>
+					<h3 class="titl">Woodpecker</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Rouzbeh Rashidi</div> | 2010 | 12'</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180320.html');">
+					<div class="foto edges"><img src="../_images/editorial/180320.png"></div>
+					<h3 class="titl">Many Thousands Gone</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Ephraim Asili</div> | 2015 | 8'</small>
+				<small class="intro edges">"A summer afternoon on the streets" in Salvador, Brazil and Harlem, New York. Sound by Joe McPhee.</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180317.html');">
+					<div class="foto edges"><img src="../_images/editorial/180317.png"></div>
+					<h3 class="titl">South Bland Street</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Lina Verchery</div> | 2013 | 4'</small>
+				<small class="intro edges">"An experimental ethnography of a place, tracing geographies of time, memory, and decay."</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180301.html');">
+					<div class="foto edges"><img src="../_images/editorial/180301.png"></div>
+					<h3 class="titl">Nail Cutter</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Jet Leyco</div> | 2011 | 3'</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180226.html');">
+					<div class="foto edges"><img src="../_images/editorial/180226.jpg"></div>
+					<h3 class="titl">Your Views</h3>
+				</div>
+				<small class="filmby">with Gillian Wearing | 2016 | 11'</small>
+				<small class="intro edges">"A huge new collaborative video project where people share the view from their window". All 33 contributions from 17 countries. </small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180225.html');">
+					<div class="foto edges"><img src="../_images/editorial/180225.png"></div>
+					<h3 class="titl">Happy End</h3>
+				</div>
+				<small class="filmby">Karel Doing | 2006 | 11'</small>
+				<small class="intro edges">Quiet days of a couple living in Rotterdam. </small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink pntcursor" onclick="moveto('180210.html');">
+					<div class="foto edges"><img src="../_images/editorial/180210.png"></div>
+					<h3 class="titl">Deconstruction Sight</h3>
+				</div>
+				<small class="filmby">Dominic Angerame | 1990 | 14'</small>
+				<small class="intro edges">Welding torches, bulldozers and construction workers.</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('180115.html');">
+					<div class="foto edges"><img src="../_images/editorial/180115.png"></div>
+					<h3 class="titl">The Reapers</h3>
+				</div>
+				<small class="filmby">Jacob Cartwright & Nick Jordan & Olivier Messiaen | 2009 | 13'</small>
+				<small class="intro edges">Traditional pigeon hunters in an oak forest in Perigord, France. A "depiction of mankind’s disparate relationship with fellow species and the natural...</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('171226.html');">
+					<div class="foto edges"><img src="../_images/editorial/171226.jpg"></div>
+					<h3 class="titl">Say cheese, say sexy</h3>
+				</div>
+				<small class="filmby">Mara Lin Visser & Lise Zurné | 2015 | 16'</small>
+				<small class="intro edges">Commenting "on costume photography and the production of ‘Dutchness’ in Volendam."</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk" >
+				<div class="onelink pntcursor" onclick="moveto('171215.html');">
+					<div class="foto edges"><img src="../_images/editorial/171215.png"></div>
+					<h3 class="titl">The Price of Jade</h3>
+				</div>
+				<small class="filmby">Minzayar Oo | 2014 | 4'</small>
+				<small class="intro edges">A photo story documenting jade mining industry in Northern Myanmar, Burma.</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk" >
+				<div class="onelink deadcursor" onclick="moveto('171022.html');">
+					<div class="foto edges"><img src="../_images/editorial/171022.jpg"></div>
+					<h3 class="titl">Junkopia</h3>
+				</div>
+				<small class="filmby">Chris Marker, Frank Simeone & John Chapman | 1981 | 7'</small>
+				<small class="intro edges">An ambient sound painting, with images of detritus pieces filmed at the Emeryville Mudflats near San Francisco.</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('171020.html');">
+					<div class="foto edges"><img src="../_images/editorial/171020.png"></div>
+					<h3 class="titl">Edge of Giza</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Bryony Dunne</div> | 2016 | 5'</small>
+				<small class="intro edges">"Rental horses and their riders (tour guides) in the vicinity of the Pyramids of Giza."</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170928.html');">
+					<div class="foto edges"><img src="../_images/editorial/170928.png"></div>
+					<h3 class="titl">The Weavers of Nishijin</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Matsumoto Toshio</div> | 1961 | 25'</small>
+				<small class="intro edges">"A documentary about traditional weavers of Nishijin."</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170901.html');">
+					<div class="foto edges"><img src="../_images/editorial/170901.jpg"></div>
+					<h3 class="titl">607</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Liu Jiayin</div> | 2010 | 17'</small>
+				<small class="intro edges">Six hands, Three mushrooms, and plastic toy fish. Abstract joyness in the wooden tub. </small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170825.html');">
+					<div class="foto edges"><img src="../_images/editorial/170825.png"></div>
+					<h3 class="titl">1234</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Zhou Tao</div> | 2007-08 | 4'</small>
+				<small class="intro edges">"Morning staff meetings in over fifty shops and companies in Shanghai and Shenzhen." </small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170824.html');">
+					<div class="foto edges"><img src="../_images/editorial/170824.png"></div>
+					<h3 class="titl">Under</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Donal Foreman</div> | 2006 | 2'</small>
+				<small class="intro edges">"As life carries on around her, a bag lady on the platform of a subway station obsessively cleans the ground at her feet." </small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170709.html');">
+					<div class="foto edges"><img src="../_images/editorial/170709.png"></div>
+					<h3 class="titl">Night in Paris</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Jean-Julien Pous</div> | 2009 | 3'</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170623.html');">
+					<div class="foto edges"><img src="../_images/editorial/170623.png"></div>
+					<h3 class="titl">John Puts a Chair Away</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Maximilian Le Cain</div> | 2008 | 7'</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170611.html');">
+					<div class="foto edges"><img src="../_images/editorial/170611.png"></div>
+					<h3 class="titl">On a Wednesday night in Tokyo</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Jan Verbeek</div> | 2004 | 6'</small>
+				<small class="intro edges">"A subway conductor squeezes an inconceivable number of people into a carriage." Shot in one take.</small>
+				</div>
+			</div>
+
+			<div class="item noselect">
+				<div class="clk">
+				<div class="onelink deadcursor" onclick="moveto('170610.html');">
+					<div class="foto edges"><img src="../_images/editorial/170610.png"></div>
+					<h3 class="titl">Das Schlafende Mädchen</h3>
+				</div>
+				<small class="filmby"><div class="who pntcursor" onclick="moveto()">Corinna Schnitt</div> | 2001 | 9'</small>
+				</div>
+			</div>
+
+		</div>
+</div>
+
+<div class="footer mancursor">
+	<hr>
+	<div class="filters noselect">auteurku</div>
+	<div class="is_a noselect">&nbsp;is</div>
+	<ul>
+	<li>a selection of <b>indie</b> | <b>short</b> | <b>experimental</b> films and moving images worldwide</li>
+	<li>a communal place for <b>people who make</b> this sort</li>
+	<li>not selling or advertising things</li>
+	</ul>
+	<hr>
+	<ul>
+	<li>programming@auteurku.com</li>
+	</ul>
+</div>
+
+<div id="vid">253957877</div>
+<script type="text/javascript" src="../_script/midfilmvim.js"></script>
+</body>
+</html>
